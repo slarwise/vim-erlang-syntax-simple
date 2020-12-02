@@ -11,7 +11,8 @@
 
 -spec add(X :: number(), Y :: number()) -> number()
 add(X, Y) ->
-    X + Y.
+    X + Y,
+    ?PI.
 
 % This is a comment
 -spec get_atom() -> atom()
@@ -6522,4 +6523,3 @@ get_type(Var) ->
         number() -> number;
         _ -> atom()
     end.
-

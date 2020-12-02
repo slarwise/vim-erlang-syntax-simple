@@ -3,20 +3,18 @@ if exists('b:current_syntax')
 endif
 let b:current_syntax = 1
 
-" What needs to be highlighted?
-"   - Stuff that highlights if something has been misspelled
-"       - preprocessor directives and attributes
-"       - Comments
-"       - Keywords: case, end, fun, of
-"       - Logical operators: ==, != etc
-" GitHub
-" Do everything following a paren in the same color
-" Do keyword, logicals the same way
-" Red: module, compile, export, spec, include, -> when, case, end, ::, =, -, *,
-" =:=
-" Purple: \a\w*[(/, i.e. types and functions
-" Blue: atoms, numbers
-" Grey: Comments
+" Highlight:
+"   - Comments
+"   - Keywords
+"   - Operators, arrows, maybe brackets
+"   - Variables
+"   - Macros
+"   - Functions
+"   - Strings, numbers
+"   - Records
+"   - Preprocessor
+
+syntax case match
 
 " Keywords
 syntax keyword erlangKeyword after begin case catch cond end fun if let of
@@ -26,38 +24,13 @@ highlight link erlangKeyword Keyword
 " Operators, separators
 syntax match erlangOperator   '==\|=:=\|/=\|=/=\|<\|=<\|>\|>=\|=>\|:=\|++\|--\|=\|!\|<-\|+\|-\|\*\|\/' display
 syntax keyword erlangOperator div rem or xor bor bxor bsl bsr and band not bnot andalso orelse
-syntax match erlangBracket    '{\|}\|\[\|]\||\|||' display
+syntax match erlangBracket    '{\|}\|\[\|]\||\|||\|:' display
 syntax match erlangPipe       '|' display
-syntax match erlangRightArrow '->' display
-
+syntax match erlangSymbol '->\|::' display
 highlight link erlangOperator Operator
-highlight link erlangRightArrow Operator
+highlight link erlangSymbol Operator
 highlight link erlangPipe Delimiter
 highlight link erlangBracket Delimiter
-
-" Comments
-syntax match erlangComment '%.*$'
-highlight link erlangComment Comment
-
-" Atoms, strings and numbers
-" syntax match erlangAtom '\<\l[[:alnum:]_]*'
-syntax region erlangString start=/"/ end=/"/
-" syntax match erlangNumber '\d\+'
-" highlight link erlangAtom Identifier
-highlight link erlangString String
-" highlight link erlangNumber Number
-
-" Functions and types
-" syntax match erlangLocalFunctionOrType '\l[[:alnum:]_]*\ze('
-" syntax match erlangExportedFunctionOrType '\l[[:alnum:]_]*:\l[[:alnum:]_]*\ze('
-" syntax match erlangFunctionRef '\l[[:alnum:]_]*\ze\/\d'
-" highlight link erlangLocalFunctionOrType Function
-" highlight link erlangExportedFunctionOrType Function
-" highlight link erlangFunctionRef Function
-
-" Attributes
-syntax match erlangAttributeModule '^-module' display
-highlight link erlangAttributeModule Type
 
 " Preprocessor directives
 syntax match erlangPreprocInclude '^-include' display
@@ -74,3 +47,32 @@ highlight link erlangPreprocRecord Structure
 highlight link erlangPreprocType Typedef
 highlight link erlangPreprocOpaque Typedef
 highlight link erlangPreprocSpec Type
+
+" Atoms, strings and numbers
+syntax region erlangString start=/"/ end=/"/
+syntax match erlangNumber '\d\+' display
+highlight link erlangString String
+highlight link erlangNumber Number
+
+" Variables
+syntax match erlangVariable '\u[[:alnum:]_]*' display
+
+" Functions and types
+syntax match erlangModulePrefix '\l[[:alnum:]_]*\ze:' display
+syntax match erlangFunctionOrType '\l[[:alnum:]_]*\ze(' display
+syntax match erlangFunctionRef '\l[[:alnum:]_]*\ze\/' display
+highlight link erlangModulePrefix Ignore
+highlight link erlangFunctionOrType Ignore
+highlight link erlangFunctionRef Ignore
+
+" Macros
+syntax match erlangMacro '?\w\+' display
+highlight link erlangMacro Macro
+
+" Attributes
+syntax match erlangAttributeModule '^-module' display
+highlight link erlangAttributeModule Type
+
+" Comments
+syntax match erlangComment '%.*$' display
+highlight link erlangComment Comment
