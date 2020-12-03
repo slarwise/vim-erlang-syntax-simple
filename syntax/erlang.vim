@@ -48,17 +48,17 @@ highlight link erlangPreprocType Typedef
 highlight link erlangPreprocOpaque Typedef
 highlight link erlangPreprocSpec Type
 
-" Atoms, strings and numbers
-syntax region erlangString start=/"/ end=/"/
-syntax match erlangQuotedAtom /'\w'/ display
-syntax match erlangNumber '\d\+' display
-highlight link erlangString String
-highlight link erlangQuotedAtom Ignore
-highlight link erlangNumber Number
-
 " Variables
 syntax match erlangVariable '\<\u\w*' display
 highligh link erlangVariable Identifier
+
+" Atoms, strings and numbers
+syntax region erlangString start=/"/ end=/"/
+syntax match erlangQuotedAtom /'\w\+'/ display
+syntax match erlangNumber '\d\+' display
+highlight link erlangString String
+highlight link erlangQuotedAtom Normal
+highlight link erlangNumber Number
 
 " Functions and types
 syntax match erlangModulePrefix '\l\w*\ze:' display

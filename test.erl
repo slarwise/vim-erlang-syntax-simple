@@ -1,6 +1,7 @@
 -module(test).
 
 -include("lib.hrl").
+'Hej'
 
 -export(get_atom/0).
 
