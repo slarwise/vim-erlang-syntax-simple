@@ -57,7 +57,7 @@ syntax region erlangString start=/"/ end=/"/
 syntax match erlangQuotedAtom /'\w\+'/ display
 syntax match erlangNumber '\d\+' display
 highlight link erlangString String
-highlight link erlangQuotedAtom Normal
+highlight link erlangQuotedAtom Ignore
 highlight link erlangNumber Number
 
 " Functions and types
