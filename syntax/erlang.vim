@@ -50,7 +50,7 @@ highlight link erlangPreprocSpec Type
 
 " Atoms, strings and numbers
 syntax region erlangString start=/"/ end=/"/
-syntax region erlangQuotedAtom /'\w'/ display
+syntax match erlangQuotedAtom /'\w'/ display
 syntax match erlangNumber '\d\+' display
 highlight link erlangString String
 highlight link erlangQuotedAtom Ignore
