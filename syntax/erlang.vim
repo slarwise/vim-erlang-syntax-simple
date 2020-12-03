@@ -56,6 +56,7 @@ highlight link erlangNumber Number
 
 " Variables
 syntax match erlangVariable '\u[[:alnum:]_]*' display
+highligh link erlangVariable Identifier
 
 " Functions and types
 syntax match erlangModulePrefix '\l[[:alnum:]_]*\ze:' display
