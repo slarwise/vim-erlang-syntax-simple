@@ -55,7 +55,7 @@ highlight link erlangString String
 highlight link erlangNumber Number
 
 " Variables
-syntax match erlangVariable '\u\w*' display
+syntax match erlangVariable '\<\u\w*' display
 highligh link erlangVariable Identifier
 
 " Functions and types
