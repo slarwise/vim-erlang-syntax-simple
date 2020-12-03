@@ -55,13 +55,13 @@ highlight link erlangString String
 highlight link erlangNumber Number
 
 " Variables
-syntax match erlangVariable '\u[[:alnum:]_]*' display
+syntax match erlangVariable '\u\w*' display
 highligh link erlangVariable Identifier
 
 " Functions and types
-syntax match erlangModulePrefix '\l[[:alnum:]_]*\ze:' display
-syntax match erlangFunctionOrType '\l[[:alnum:]_]*\ze(' display
-syntax match erlangFunctionRef '\l[[:alnum:]_]*\ze\/' display
+syntax match erlangModulePrefix '\l\w*\ze:' display
+syntax match erlangFunctionOrType '\l\w*\ze(' display
+syntax match erlangFunctionRef '\l\w*\ze\/' display
 highlight link erlangModulePrefix Ignore
 highlight link erlangFunctionOrType Ignore
 highlight link erlangFunctionRef Ignore
