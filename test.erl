@@ -10,8 +10,9 @@
 -type my_int() :: non_neg_integer().
 -opaque my_float() :: float().
 
--spec add(X :: number(), Y :: number()) -> number()
+-spec add(X :: number(), Y :: number()) -> number().
 add(X, Y) ->
+    #person.name.
     X + Y,
     ?PI.
 

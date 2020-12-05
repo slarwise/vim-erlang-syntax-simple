@@ -1,0 +1,138 @@
+" nvim -N -u NONE -c 'set runtimepath=.,$VIMRUNTIME,~/.config/nvim/plugged/vader.vim' -c 'runtime plugin/vader.vim' -c 'filetype plugin indent on' -c 'syntax on' -c 'Vader!*' && echo Success || cat $VADER_OUTPUT_FILE
+
+" Comments {{{1
+Given erlang:
+  % A comment
+Execute:
+  AssertEqual SyntaxAt(), 'erlangComment'
+
+" Keywords {{{
+Given erlang:
+  after
+Execute:
+  AssertEqual SyntaxAt(), 'erlangKeyword'
+
+" Operators {{{1
+Given erlang:
+  ==
+Execute:
+  AssertEqual SyntaxAt(), 'erlangOperator'
+
+Given erlang:
+  div
+Execute:
+  AssertEqual SyntaxAt(), 'erlangOperator'
+
+Given erlang:
+  {
+Execute:
+  AssertEqual SyntaxAt(), 'erlangBracket'
+
+Given erlang:
+  |
+Execute:
+  AssertEqual SyntaxAt(), 'erlangPipe'
+
+Given erlang:
+  ->
+Execute:
+  AssertEqual SyntaxAt(), 'erlangSymbol'
+
+" Variables {{{1
+Given erlang:
+  MyVar
+Execute:
+  AssertEqual SyntaxAt(), 'erlangVariable'
+
+" Macros {{{1
+Given erlang:
+  ?PI
+Execute:
+  AssertEqual SyntaxAt(), 'erlangMacro'
+
+Given erlang:
+  ?pi
+Execute:
+  AssertEqual SyntaxAt(), 'erlangMacro'
+
+" Records {{{1
+Given erlang:
+  #my_record
+Execute:
+  AssertEqual SyntaxAt(), 'erlangRecord'
+
+" Functions {{{1
+Given erlang:
+  my_module:
+Execute:
+  AssertEqual SyntaxAt(), 'erlangModulePrefix'
+
+Given erlang:
+  my_function1()
+Execute:
+  AssertEqual SyntaxAt(), 'erlangFunctionOrType'
+
+Given erlang:
+  funcref/1.
+Execute:
+  AssertEqual SyntaxAt(), 'erlangFunctionRef'
+
+" Strings {{{1
+Given erlang:
+  "A string"
+Execute:
+  AssertEqual SyntaxAt(), 'erlangString'
+
+" Quoted atomes {{{1
+Given erlang:
+  'AnAtom'
+Execute:
+  AssertEqual SyntaxAt(), 'erlangQuotedAtom'
+
+" Numbers {{{1
+Given erlang:
+  0
+Execute:
+  AssertEqual SyntaxAt(), 'erlangNumber'
+
+" Preprocessor {{{1
+Given erlang:
+  -include
+Execute:
+  AssertEqual SyntaxAt(), 'erlangPreprocInclude'
+
+Given erlang:
+  -export
+Execute:
+  AssertEqual SyntaxAt(), 'erlangPreprocExport'
+
+Given erlang:
+  -define
+Execute:
+  AssertEqual SyntaxAt(), 'erlangPreprocDefine'
+
+Given erlang:
+  -record
+Execute:
+  AssertEqual SyntaxAt(), 'erlangPreprocRecord'
+
+Given erlang:
+  -type
+Execute:
+  AssertEqual SyntaxAt(), 'erlangPreprocType'
+
+Given erlang:
+  -opaque
+Execute:
+  AssertEqual SyntaxAt(), 'erlangPreprocOpaque'
+
+Given erlang:
+  -spec
+Execute:
+  AssertEqual SyntaxAt(), 'erlangPreprocSpec'
+
+" Attributes {{{1
+Given erlang:
+  -module
+Execute:
+  AssertEqual SyntaxAt(), 'erlangAttributeModule'
