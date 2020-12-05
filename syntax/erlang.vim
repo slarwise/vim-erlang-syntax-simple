@@ -8,11 +8,12 @@ let b:current_syntax = 1
 "   - Keywords
 "   - Operators, arrows, maybe brackets
 "   - Variables
-"   - Macros
-"   - Functions
+"   - Atoms
+"   - Macros (?Variable)
+"   - Functions (atom()
 "   - Strings, numbers
-"   - Records
-"   - Preprocessor
+"   - Records (#atom)
+"   - Preprocessor (^-atom)
 
 syntax case match
 
@@ -24,29 +25,13 @@ highlight link erlangKeyword Keyword
 " Operators, separators
 syntax match erlangOperator   '==\|=:=\|/=\|=/=\|<\|=<\|>\|>=\|=>\|:=\|++\|--\|=\|!\|<-\|+\|-\|\*\|\/' display
 syntax keyword erlangOperator div rem or xor bor bxor bsl bsr and band not bnot andalso orelse
-syntax match erlangBracket    /{\|}\|\[\|]\||\|||\|:/ display
+syntax match erlangBracket    /{\|}\|\[\|]\||\|||\|:\|::/ display
 syntax match erlangPipe       /|/ display
-syntax match erlangSymbol /->\|::/ display
+syntax match erlangArrow /->/ display
 highlight link erlangOperator Operator
-highlight link erlangSymbol Operator
+highlight link erlangArrow Operator
 highlight link erlangPipe Delimiter
 highlight link erlangBracket Delimiter
-
-" Preprocessor directives
-syntax match erlangPreprocInclude /^-include/ display
-syntax match erlangPreprocExport /^-export/ display
-syntax match erlangPreprocDefine /^-define/ display
-syntax match erlangPreprocRecord /^-record/ display
-syntax match erlangPreprocType /^-type/ display
-syntax match erlangPreprocOpaque /^-opaque/ display
-syntax match erlangPreprocSpec /^-spec/ display
-highlight link erlangPreprocInclude Include
-highlight link erlangPreprocExport PreProc
-highlight link erlangPreprocDefine Define
-highlight link erlangPreprocRecord Structure
-highlight link erlangPreprocType Typedef
-highlight link erlangPreprocOpaque Typedef
-highlight link erlangPreprocSpec Type
 
 " Variables
 syntax match erlangVariable /\<\u\w*/ display
@@ -54,10 +39,12 @@ highligh link erlangVariable Identifier
 
 " Atoms, strings and numbers
 syntax region erlangString start=/"/ end=/"/
+syntax match erlangAtom /\l\w*/ display
 syntax match erlangQuotedAtom /'\w\+'/ display
 syntax match erlangNumber /\d\+/ display
 highlight link erlangString String
-highlight link erlangQuotedAtom Ignore
+highlight link erlangAtom String
+highlight link erlangQuotedAtom String
 highlight link erlangNumber Number
 
 " Functions and types
@@ -79,6 +66,26 @@ highlight link ErlangRecord Structure
 " Attributes
 syntax match erlangAttributeModule /^-module/ display
 highlight link erlangAttributeModule Type
+
+" Preprocessor directives
+syntax match erlangPreprocInclude /^-include/ display
+syntax match erlangPreprocIncludelib /^-include_lib/ display
+syntax match erlangPreprocExport /^-export/ display
+syntax match erlangPreprocExporttype /^-export_type/ display
+syntax match erlangPreprocDefine /^-define/ display
+syntax match erlangPreprocRecord /^-record/ display
+syntax match erlangPreprocType /^-type/ display
+syntax match erlangPreprocOpaque /^-opaque/ display
+syntax match erlangPreprocSpec /^-spec/ display
+highlight link erlangPreprocInclude Include
+highlight link erlangPreprocIncludelib Include
+highlight link erlangPreprocExport PreProc
+highlight link erlangPreprocExporttype PreProc
+highlight link erlangPreprocDefine Define
+highlight link erlangPreprocRecord Structure
+highlight link erlangPreprocType Typedef
+highlight link erlangPreprocOpaque Typedef
+highlight link erlangPreprocSpec Type
 
 " Comments
 syntax match erlangComment /%.*$/ display

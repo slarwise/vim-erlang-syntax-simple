@@ -83,7 +83,12 @@ Given erlang:
 Execute:
   AssertEqual SyntaxAt(), 'erlangString'
 
-" Quoted atomes {{{1
+" Atoms {{{1
+Given erlang:
+  atom
+Execute:
+  AssertEqual SyntaxAt(), 'erlangAtom'
+
 Given erlang:
   'AnAtom'
 Execute:
