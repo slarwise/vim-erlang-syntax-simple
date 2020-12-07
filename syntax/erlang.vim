@@ -34,7 +34,7 @@ highlight link erlangPipe Delimiter
 highlight link erlangBracket Delimiter
 
 " Variables
-syntax match erlangVariable /\<\u\w*/ display
+syntax match erlangVariable /\<[A-Z_]\w*/ display
 highligh link erlangVariable Identifier
 
 " Atoms, strings and numbers

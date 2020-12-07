@@ -36,11 +36,21 @@ Execute:
 Given erlang:
   ->
 Execute:
-  AssertEqual SyntaxAt(), 'erlangSymbol'
+  AssertEqual SyntaxAt(), 'erlangArrow'
 
 " Variables {{{1
 Given erlang:
   MyVar
+Execute:
+  AssertEqual SyntaxAt(), 'erlangVariable'
+
+Given erlang:
+  _MyVar
+Execute:
+  AssertEqual SyntaxAt(), 'erlangVariable'
+
+Given erlang:
+  _
 Execute:
   AssertEqual SyntaxAt(), 'erlangVariable'
 
