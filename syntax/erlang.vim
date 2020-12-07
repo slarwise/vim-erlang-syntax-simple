@@ -39,7 +39,7 @@ highligh link erlangVariable Identifier
 
 " Atoms, strings and numbers
 syntax region erlangString start=/"/ end=/"/
-syntax match erlangAtom /\l\w*/ display
+syntax match erlangAtom /\<\l\w*/ display
 syntax match erlangQuotedAtom /'\w\+'/ display
 syntax match erlangNumber /\d\+/ display
 highlight link erlangString String
@@ -48,9 +48,9 @@ highlight link erlangQuotedAtom String
 highlight link erlangNumber Number
 
 " Functions and types
-syntax match erlangModulePrefix /\l\w*\ze:/ display
-syntax match erlangFunctionOrType /\l\w*\ze(/ display
-syntax match erlangFunctionRef /\l\w*\ze\// display
+syntax match erlangModulePrefix /\<\l\w*\ze:/ display
+syntax match erlangFunctionOrType /\<\l\w*\ze(/ display
+syntax match erlangFunctionRef /\<\l\w*\ze\// display
 highlight link erlangModulePrefix Ignore
 highlight link erlangFunctionOrType Ignore
 highlight link erlangFunctionRef Ignore
