@@ -1,153 +1,38 @@
 " nvim -N -u NONE -c 'set runtimepath=.,$VIMRUNTIME,~/.config/nvim/plugged/vader.vim' -c 'runtime plugin/vader.vim' -c 'filetype plugin indent on' -c 'syntax on' -c 'Vader!*' && echo Success || cat $VADER_OUTPUT_FILE
 
-" Comments {{{1
-Given erlang:
-  % A comment
 Execute:
-  AssertEqual SyntaxAt(), 'erlangComment'
+  set filetype=erlang
 
-" Keywords {{{
-Given erlang:
-  after
-Execute:
-  AssertEqual SyntaxAt(), 'erlangKeyword'
+  let highlight_group_to_matches = {
+    \ 'erlangComment': ['% A comment'],
+    \ 'erlangKeyword': ['after'],
+    \ 'erlangOperator': ['==', 'div'],
+    \ 'erlangBracket': ['{'],
+    \ 'erlangPipe': ['|'],
+    \ 'erlangArrow': ['->'],
+    \ 'erlangVariable': ['MyVar', '_MyVar', '_'],
+    \ 'erlangMacro': ['?PI', '?pi'],
+    \ 'erlangRecord': ['#my_record'],
+    \ 'erlangModulePrefix': ['my_module:'],
+    \ 'erlangFunctionOrType': ['my_function()'],
+    \ 'erlangFunctionRef': ['funcref/1'],
+    \ 'erlangString': ['"A string"'],
+    \ 'erlangAtom': ['atom'],
+    \ 'erlangQuotedAtom': ["'AnAtom'"],
+    \ 'erlangNumber': ['0'],
+    \ 'erlangPreprocInclude': ['-include'],
+    \ 'erlangPreprocExport': ['-export'],
+    \ 'erlangPreprocDefine': ['-define'],
+    \ 'erlangPreprocRecord': ['-record'],
+    \ 'erlangPreprocType': ['-type'],
+    \ 'erlangPreprocOpaque': ['-opaque'],
+    \ 'erlangPreprocSpec': ['-spec'],
+    \ 'erlangAttributeModule': ['-module']
+  \ }
 
-" Operators {{{1
-Given erlang:
-  ==
-Execute:
-  AssertEqual SyntaxAt(), 'erlangOperator'
-
-Given erlang:
-  div
-Execute:
-  AssertEqual SyntaxAt(), 'erlangOperator'
-
-Given erlang:
-  {
-Execute:
-  AssertEqual SyntaxAt(), 'erlangBracket'
-
-Given erlang:
-  |
-Execute:
-  AssertEqual SyntaxAt(), 'erlangPipe'
-
-Given erlang:
-  ->
-Execute:
-  AssertEqual SyntaxAt(), 'erlangArrow'
-
-" Variables {{{1
-Given erlang:
-  MyVar
-Execute:
-  AssertEqual SyntaxAt(), 'erlangVariable'
-
-Given erlang:
-  _MyVar
-Execute:
-  AssertEqual SyntaxAt(), 'erlangVariable'
-
-Given erlang:
-  _
-Execute:
-  AssertEqual SyntaxAt(), 'erlangVariable'
-
-" Macros {{{1
-Given erlang:
-  ?PI
-Execute:
-  AssertEqual SyntaxAt(), 'erlangMacro'
-
-Given erlang:
-  ?pi
-Execute:
-  AssertEqual SyntaxAt(), 'erlangMacro'
-
-" Records {{{1
-Given erlang:
-  #my_record
-Execute:
-  AssertEqual SyntaxAt(), 'erlangRecord'
-
-" Functions {{{1
-Given erlang:
-  my_module:
-Execute:
-  AssertEqual SyntaxAt(), 'erlangModulePrefix'
-
-Given erlang:
-  my_function1()
-Execute:
-  AssertEqual SyntaxAt(), 'erlangFunctionOrType'
-
-Given erlang:
-  funcref/1.
-Execute:
-  AssertEqual SyntaxAt(), 'erlangFunctionRef'
-
-" Strings {{{1
-Given erlang:
-  "A string"
-Execute:
-  AssertEqual SyntaxAt(), 'erlangString'
-
-" Atoms {{{1
-Given erlang:
-  atom
-Execute:
-  AssertEqual SyntaxAt(), 'erlangAtom'
-
-Given erlang:
-  'AnAtom'
-Execute:
-  AssertEqual SyntaxAt(), 'erlangQuotedAtom'
-
-" Numbers {{{1
-Given erlang:
-  0
-Execute:
-  AssertEqual SyntaxAt(), 'erlangNumber'
-
-" Preprocessor {{{1
-Given erlang:
-  -include
-Execute:
-  AssertEqual SyntaxAt(), 'erlangPreprocInclude'
-
-Given erlang:
-  -export
-Execute:
-  AssertEqual SyntaxAt(), 'erlangPreprocExport'
-
-Given erlang:
-  -define
-Execute:
-  AssertEqual SyntaxAt(), 'erlangPreprocDefine'
-
-Given erlang:
-  -record
-Execute:
-  AssertEqual SyntaxAt(), 'erlangPreprocRecord'
-
-Given erlang:
-  -type
-Execute:
-  AssertEqual SyntaxAt(), 'erlangPreprocType'
-
-Given erlang:
-  -opaque
-Execute:
-  AssertEqual SyntaxAt(), 'erlangPreprocOpaque'
-
-Given erlang:
-  -spec
-Execute:
-  AssertEqual SyntaxAt(), 'erlangPreprocSpec'
-
-" Attributes {{{1
-Given erlang:
-  -module
-Execute:
-  AssertEqual SyntaxAt(), 'erlangAttributeModule'
+  for [group, matches] in items(highlight_group_to_matches)
+    for match in matches
+      call setline(1, match)
+      AssertEqual SyntaxAt(), group
+    endfor
+  endfor
