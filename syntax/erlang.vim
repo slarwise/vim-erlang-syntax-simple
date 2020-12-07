@@ -25,8 +25,8 @@ highlight link erlangKeyword Keyword
 " Operators, separators
 syntax match erlangOperator   '==\|=:=\|/=\|=/=\|<\|=<\|>\|>=\|=>\|:=\|++\|--\|=\|!\|<-\|+\|-\|\*\|\/' display
 syntax keyword erlangOperator div rem or xor bor bxor bsl bsr and band not bnot andalso orelse
-syntax match erlangBracket    /{\|}\|\[\|]\||\|||\|:\|::/ display
-syntax match erlangPipe       /|/ display
+syntax match erlangBracket /{\|}\|\[\|]\||\|||\|:\|::/ display
+syntax match erlangPipe /|/ display
 syntax match erlangArrow /->/ display
 highlight link erlangOperator Operator
 highlight link erlangArrow Operator
@@ -64,28 +64,14 @@ syntax match erlangRecord /#\l\w*/ display
 highlight link ErlangRecord Structure
 
 " Attributes
-syntax match erlangAttributeModule /^-module/ display
-highlight link erlangAttributeModule Type
+syntax match erlangAttribute /^-module\>/ display
+highlight link erlangAttribute Typedef
 
 " Preprocessor directives
-syntax match erlangPreprocInclude /^-include/ display
-syntax match erlangPreprocIncludelib /^-include_lib/ display
-syntax match erlangPreprocExport /^-export/ display
-syntax match erlangPreprocExporttype /^-export_type/ display
-syntax match erlangPreprocDefine /^-define/ display
-syntax match erlangPreprocRecord /^-record/ display
-syntax match erlangPreprocType /^-type/ display
-syntax match erlangPreprocOpaque /^-opaque/ display
-syntax match erlangPreprocSpec /^-spec/ display
-highlight link erlangPreprocInclude Include
-highlight link erlangPreprocIncludelib Include
-highlight link erlangPreprocExport PreProc
-highlight link erlangPreprocExporttype PreProc
-highlight link erlangPreprocDefine Define
-highlight link erlangPreprocRecord Structure
-highlight link erlangPreprocType Typedef
-highlight link erlangPreprocOpaque Typedef
-highlight link erlangPreprocSpec Type
+syntax match erlangPreProc /^-\%(include\|include_lib\|export\|export_type\|define\|record\)\>/ display
+syntax match erlangTypedef /^-\%(type\|opaque\|spec\)\>/ display
+highlight link erlangPreProc PreProc
+highlight link erlangTypedef Typedef
 
 " Comments
 syntax match erlangComment /%.*$/ display

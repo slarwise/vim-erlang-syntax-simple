@@ -20,14 +20,9 @@ Execute:
     \ 'erlangAtom': ['atom'],
     \ 'erlangQuotedAtom': ["'AnAtom'"],
     \ 'erlangNumber': ['0'],
-    \ 'erlangPreprocInclude': ['-include'],
-    \ 'erlangPreprocExport': ['-export'],
-    \ 'erlangPreprocDefine': ['-define'],
-    \ 'erlangPreprocRecord': ['-record'],
-    \ 'erlangPreprocType': ['-type'],
-    \ 'erlangPreprocOpaque': ['-opaque'],
-    \ 'erlangPreprocSpec': ['-spec'],
-    \ 'erlangAttributeModule': ['-module']
+    \ 'erlangPreProc': ['-include', '-include_lib', '-export', '-export_type', '-define', '-record'],
+    \ 'erlangTypedef': ['-type', '-opaque', '-spec'],
+    \ 'erlangAttribute': ['-module']
   \ }
 
   for [group, matches] in items(highlight_group_to_matches)
