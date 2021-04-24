@@ -61,16 +61,24 @@ highlight link erlangMacro Macro
 
 " Records
 syntax match erlangRecord /#\l\w*/ display
-highlight link ErlangRecord Structure
+highlight link erlangRecord Structure
 
-" Attributes
-syntax match erlangAttribute /^-module\>/ display
-highlight link erlangAttribute Typedef
+" Module attributes
+syntax match erlangModuleAttribute /^-\%(module\|compile\|vsn\|on_load\|author\|behaviour\|behaviour_info\|callback\|file\)\>/ display
+highlight link erlangModuleAttribute Typedef
 
 " Preprocessor directives
-syntax match erlangPreProc /^-\%(include\|include_lib\|export\|export_type\|define\|record\)\>/ display
+syntax match erlangPreProcInclude /^-\%(include\|include_lib\|import\)\>/ display
+syntax match erlangPreProcExport /^-\%(export\|export_type\)\>/ display
+syntax match erlangPreProcMacro /^-\%(define\|ifdef\|ifndef\|else\|endif\|if\|elif\)\>/ display
+syntax match erlangPreProcError /^-\%(error\|warning\)\>/ display
+syntax match erlangPreProcRecord /^-record\>/ display
 syntax match erlangTypedef /^-\%(type\|opaque\|spec\)\>/ display
-highlight link erlangPreProc PreProc
+highlight link erlangPreProcInclude PreProc
+highlight link erlangPreProcExport PreProc
+highlight link erlangPreProcMacro PreProc
+highlight link erlangPreProcError PreProc
+highlight link erlangPreProcRecord PreProc
 highlight link erlangTypedef Typedef
 
 " Comments
