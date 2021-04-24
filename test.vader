@@ -18,7 +18,7 @@ Execute:
     \ 'erlangFunctionRef': ['funcref/1'],
     \ 'erlangString': ['"A string"'],
     \ 'erlangAtom': ['atom'],
-    \ 'erlangQuotedAtom': ["'AnAtom'"],
+    \ 'erlangQuotedAtom': ["'AnAtom'", "'an-Atom\n3withOther_Stuffin?it'"],
     \ 'erlangNumber': ['0'],
     \ 'erlangPreProcInclude': ['-include', '-include_lib', '-import'],
     \ 'erlangPreProcExport': ['-export', '-export_type'],

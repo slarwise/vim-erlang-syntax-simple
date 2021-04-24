@@ -40,7 +40,7 @@ highligh link erlangVariable Identifier
 " Atoms, strings and numbers
 syntax region erlangString start=/"/ end=/"/
 syntax match erlangAtom /\<\l\w*/ display
-syntax match erlangQuotedAtom /'\w\+'/ display
+syntax region erlangQuotedAtom start=/'/ end=/'/ display
 syntax match erlangNumber /\d\+/ display
 highlight link erlangString String
 highlight link erlangAtom String
