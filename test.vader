@@ -20,9 +20,13 @@ Execute:
     \ 'erlangAtom': ['atom'],
     \ 'erlangQuotedAtom': ["'AnAtom'"],
     \ 'erlangNumber': ['0'],
-    \ 'erlangPreProc': ['-include', '-include_lib', '-export', '-export_type', '-define', '-record'],
+    \ 'erlangPreProcInclude': ['-include', '-include_lib', '-import'],
+    \ 'erlangPreProcExport': ['-export', '-export_type'],
+    \ 'erlangPreProcMacro': ['-define', '-ifdef', '-ifndef', '-else', '-endif', '-if', '-elif'],
+    \ 'erlangPreProcError': ['-error', '-warning'],
+    \ 'erlangPreProcRecord': ['-record'],
     \ 'erlangTypedef': ['-type', '-opaque', '-spec'],
-    \ 'erlangAttribute': ['-module']
+    \ 'erlangModuleAttribute': ['-module', '-compile', '-vsn', '-on_load', '-author', '-behaviour', '-behaviour_info', '-callback', '-file']
   \ }
 
   for [group, matches] in items(highlight_group_to_matches)
