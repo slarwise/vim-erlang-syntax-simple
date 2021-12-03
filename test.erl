@@ -2,7 +2,7 @@
 
 -include("lib.hrl").
 
--export(get_atom/0).
+-export([get_atom/0]).
 
 -define(PI, 3.14).
 -record(person, {name, age, phone}).
@@ -11,12 +11,13 @@
 
 -spec add(X :: number(), Y :: number()) -> number().
 add(X, Y) ->
-    #person.name.
+    P = #person{name = hej},
+    P#person.name,
     X + Y,
     ?PI.
 
 % This is a comment
--spec get_atom() -> atom()
+-spec get_atom() -> atom().
 get_atom() ->
     MyVar = other_module:name_of_function(),
     myatom,
@@ -27,7 +28,7 @@ get_string() ->
     "Hi".
 
 get_type(Var) ->
-    case Var of
-        number() -> number;
-        _ -> atom()
+    case is_number(Var) of
+        true -> number;
+        false -> not_a_number
     end.
