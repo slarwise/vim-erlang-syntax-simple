@@ -51,9 +51,9 @@ highlight link erlangNumber Number
 syntax match erlangModulePrefix /\<\l\w*\ze:/ display
 syntax match erlangFunctionOrType /\<\l\w*\ze(/ display
 syntax match erlangFunctionRef /\<\l\w*\ze\// display
-highlight link erlangModulePrefix Ignore
-highlight link erlangFunctionOrType Ignore
-highlight link erlangFunctionRef Ignore
+highlight link erlangModulePrefix Normal
+highlight link erlangFunctionOrType Normal
+highlight link erlangFunctionRef Normal
 
 " Macros
 syntax match erlangMacro /?\w\+/ display
